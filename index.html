@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة ظروف الزمان والمكان</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- رأس اللعبة -->
+        <header class="game-header">
+            <h1>🎮 لعبة ظروف الزمان والمكان 🎮</h1>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="score-label">النقاط:</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">السؤال:</span>
+                    <span class="score-value" id="questionNumber">1</span> / <span id="totalQuestions">10</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- الشخصية المرشدة -->
+        <div class="character-section">
+            <div class="character">
+                <div class="character-head">😊</div>
+                <div class="character-message" id="characterMessage">مرحباً! هل أنت مستعد للعبة؟</div>
+            </div>
+        </div>
+
+        <!-- المحتوى الرئيسي للعبة -->
+        <main class="game-content">
+            <!-- شاشة البداية -->
+            <section id="startScreen" class="screen active">
+                <div class="start-content">
+                    <h2>اختر مستوى اللعبة</h2>
+                    <div class="level-buttons">
+                        <button class="level-btn level-easy" onclick="startGame('easy')">
+                            <span class="level-icon">⭐</span>
+                            <span class="level-name">المستوى الأول (سهل)</span>
+                            <span class="level-desc">أسئلة عن المكان</span>
+                        </button>
+                        <button class="level-btn level-medium" onclick="startGame('medium')">
+                            <span class="level-icon">⭐⭐</span>
+                            <span class="level-name">المستوى الثاني (متوسط)</span>
+                            <span class="level-desc">أسئلة عن الزمان</span>
+                        </button>
+                        <button class="level-btn level-hard" onclick="startGame('hard')">
+                            <span class="level-icon">⭐⭐⭐</span>
+                            <span class="level-name">المستوى الثالث (متقدم)</span>
+                            <span class="level-desc">أسئلة مختلطة</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- شاشة اللعبة الرئيسية -->
+            <section id="gameScreen" class="screen">
+                <!-- نوع السؤال -->
+                <div class="question-type">
+                    <span id="questionType" class="type-badge">نوع السؤال</span>
+                </div>
+
+                <!-- السؤال -->
+                <div class="question-section">
+                    <div class="question-image">
+                        <img id="questionImage" src="images/placeholder.png" alt="صورة السؤال">
+                    </div>
+                    <div class="question-text">
+                        <p id="questionText">السؤال سيظهر هنا</p>
+                    </div>
+                </div>
+
+                <!-- الخيارات -->
+                <div class="options-section" id="optionsContainer">
+                    <!-- الخيارات سيتم إضافتها ديناميكياً -->
+                </div>
+
+                <!-- شريط التقدم -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </section>
+
+            <!-- شاشة النتيجة -->
+            <section id="resultScreen" class="screen">
+                <div class="result-content">
+                    <div class="result-emoji" id="resultEmoji">🎉</div>
+                    <h2 id="resultTitle">ممتاز!</h2>
+                    <p id="resultMessage">لقد أجبت بشكل صحيح!</p>
+                    <div class="result-buttons">
+                        <button class="btn btn-next" onclick="nextQuestion()">السؤال التالي →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- شاشة النهاية -->
+            <section id="endScreen" class="screen">
+                <div class="end-content">
+                    <div class="end-emoji">🏆</div>
+                    <h2>تهانينا! لقد أكملت اللعبة</h2>
+                    <div class="final-score">
+                        <p>النقاط النهائية: <span id="finalScore">0</span> / <span id="maxScore">100</span></p>
+                    </div>
+                    <div class="performance">
+                        <p id="performanceMessage">أداء ممتاز!</p>
+                    </div>
+                    <div class="end-buttons">
+                        <button class="btn btn-restart" onclick="restartGame()">العودة للبداية 🔄</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Cordova JavaScript -->
+    <script src="cordova.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
